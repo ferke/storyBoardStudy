@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AA6A49315CE82F8002AF56F /* SBEmployeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6A49215CE82F8002AF56F /* SBEmployeeViewController.m */; };
 		4ABFCABD15C5445B00319E54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABFCABC15C5445B00319E54 /* UIKit.framework */; };
 		4ABFCABF15C5445B00319E54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABFCABE15C5445B00319E54 /* Foundation.framework */; };
 		4ABFCAC115C5445B00319E54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABFCAC015C5445B00319E54 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AA6A49115CE82F8002AF56F /* SBEmployeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBEmployeeViewController.h; path = views/SBEmployeeViewController.h; sourceTree = "<group>"; };
+		4AA6A49215CE82F8002AF56F /* SBEmployeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBEmployeeViewController.m; path = views/SBEmployeeViewController.m; sourceTree = "<group>"; };
 		4ABFCAB815C5445B00319E54 /* storyB_Table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = storyB_Table.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABFCABC15C5445B00319E54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4ABFCABE15C5445B00319E54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,6 +100,8 @@
 				4ABFCAC315C5445B00319E54 /* Supporting Files */,
 				4ABFCADC15C5478C00319E54 /* SBEmployeeTableViewController.h */,
 				4ABFCADD15C5478C00319E54 /* SBEmployeeTableViewController.m */,
+				4AA6A49115CE82F8002AF56F /* SBEmployeeViewController.h */,
+				4AA6A49215CE82F8002AF56F /* SBEmployeeViewController.m */,
 			);
 			path = storyB_Table;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				4ABFCADE15C5478C00319E54 /* SBEmployeeTableViewController.m in Sources */,
 				4ABFCAE115C551AF00319E54 /* SBDataManager.m in Sources */,
 				4ABFCAE515C55CC500319E54 /* SBEmployee.m in Sources */,
+				4AA6A49315CE82F8002AF56F /* SBEmployeeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +321,7 @@
 				4ABFCAD815C5445B00319E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

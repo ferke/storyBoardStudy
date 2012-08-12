@@ -9,6 +9,7 @@
 #import "SBEmployeeTableViewController.h"
 #import "SBDataManager.h"
 #import "SBEmployee.h"
+#import "SBEmployeeViewController.h"
 
 @interface SBEmployeeTableViewController ()
 
@@ -98,6 +99,22 @@
     portrait.image = [(SBEmployee*)[Employees objectAtIndex:indexPath.row] Portrait];
     
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"employeeDetails"])
+    {
+        NSIndexPath* indexPath = [self.tableView indexPathForCell:sender];
+        
+        SBEmployeeViewController* employeeVC = [segue destinationViewController];
+        SBEmployee* employee = [Employees objectAtIndex:indexPath.row];
+        
+        employeeVC._Employee = employee;
+    }
+    
+    
+    
 }
 
 /*
