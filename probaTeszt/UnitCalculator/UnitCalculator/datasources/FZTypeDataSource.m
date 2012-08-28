@@ -12,13 +12,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    return 3;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString* CellID = @"typeCell";
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+
+    [[cell textLabel] setText:[NSString stringWithFormat:@"%d", indexPath.row]];
     
+    return cell;
 }
 
 @end

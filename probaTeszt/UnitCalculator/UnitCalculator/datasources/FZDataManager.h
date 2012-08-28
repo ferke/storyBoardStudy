@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+    weight,
+    length,
+    temperature,
+    volume,
+    
+}Types;
+
 @interface FZDataManager : NSObject
+
++(FZDataManager*)getInstance;
+
+-(NSArray*)getUnitsForType:(Types)type;
 
 @end

@@ -15,8 +15,10 @@
 		4AA6A5B915D256FB002AF56F /* FZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6A5B815D256FB002AF56F /* FZAppDelegate.m */; };
 		4AA6A5BC15D256FB002AF56F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AA6A5BA15D256FB002AF56F /* MainStoryboard.storyboard */; };
 		4AA6A5BF15D256FB002AF56F /* FZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6A5BE15D256FB002AF56F /* FZViewController.m */; };
-		4AA6A5C815D2728C002AF56F /* FZTypeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6A5C715D2728C002AF56F /* FZTypeDataSource.m */; };
 		4AA6A5CB15D27307002AF56F /* FZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6A5CA15D27307002AF56F /* FZDataManager.m */; };
+		4ADC429E15EAB033009106C9 /* length.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADC429B15EAB033009106C9 /* length.png */; };
+		4ADC429F15EAB033009106C9 /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADC429C15EAB033009106C9 /* temp.png */; };
+		4ADC42A015EAB033009106C9 /* weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADC429D15EAB033009106C9 /* weight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +35,11 @@
 		4AA6A5BB15D256FB002AF56F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4AA6A5BD15D256FB002AF56F /* FZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FZViewController.h; sourceTree = "<group>"; };
 		4AA6A5BE15D256FB002AF56F /* FZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FZViewController.m; sourceTree = "<group>"; };
-		4AA6A5C615D2728C002AF56F /* FZTypeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZTypeDataSource.h; path = datasources/FZTypeDataSource.h; sourceTree = "<group>"; };
-		4AA6A5C715D2728C002AF56F /* FZTypeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZTypeDataSource.m; path = datasources/FZTypeDataSource.m; sourceTree = "<group>"; };
 		4AA6A5C915D27307002AF56F /* FZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZDataManager.h; path = datasources/FZDataManager.h; sourceTree = "<group>"; };
 		4AA6A5CA15D27307002AF56F /* FZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZDataManager.m; path = datasources/FZDataManager.m; sourceTree = "<group>"; };
+		4ADC429B15EAB033009106C9 /* length.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = length.png; path = resources/length.png; sourceTree = "<group>"; };
+		4ADC429C15EAB033009106C9 /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = temp.png; path = resources/temp.png; sourceTree = "<group>"; };
+		4ADC429D15EAB033009106C9 /* weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weight.png; path = resources/weight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		4AA6A5AE15D256FB002AF56F /* UnitCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				4ADC429A15EAB01E009106C9 /* resources */,
 				4AA6A5C515D2725F002AF56F /* data */,
 				4AA6A5B715D256FB002AF56F /* FZAppDelegate.h */,
 				4AA6A5B815D256FB002AF56F /* FZAppDelegate.m */,
@@ -108,12 +112,20 @@
 		4AA6A5C515D2725F002AF56F /* data */ = {
 			isa = PBXGroup;
 			children = (
-				4AA6A5C615D2728C002AF56F /* FZTypeDataSource.h */,
-				4AA6A5C715D2728C002AF56F /* FZTypeDataSource.m */,
 				4AA6A5C915D27307002AF56F /* FZDataManager.h */,
 				4AA6A5CA15D27307002AF56F /* FZDataManager.m */,
 			);
 			name = data;
+			sourceTree = "<group>";
+		};
+		4ADC429A15EAB01E009106C9 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				4ADC429B15EAB033009106C9 /* length.png */,
+				4ADC429C15EAB033009106C9 /* temp.png */,
+				4ADC429D15EAB033009106C9 /* weight.png */,
+			);
+			name = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +181,9 @@
 			files = (
 				4AA6A5B315D256FB002AF56F /* InfoPlist.strings in Resources */,
 				4AA6A5BC15D256FB002AF56F /* MainStoryboard.storyboard in Resources */,
+				4ADC429E15EAB033009106C9 /* length.png in Resources */,
+				4ADC429F15EAB033009106C9 /* temp.png in Resources */,
+				4ADC42A015EAB033009106C9 /* weight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +197,6 @@
 				4AA6A5B515D256FB002AF56F /* main.m in Sources */,
 				4AA6A5B915D256FB002AF56F /* FZAppDelegate.m in Sources */,
 				4AA6A5BF15D256FB002AF56F /* FZViewController.m in Sources */,
-				4AA6A5C815D2728C002AF56F /* FZTypeDataSource.m in Sources */,
 				4AA6A5CB15D27307002AF56F /* FZDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +309,7 @@
 				4AA6A5C415D256FB002AF56F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

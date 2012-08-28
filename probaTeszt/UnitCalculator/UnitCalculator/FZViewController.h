@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FZViewController : UIViewController <UITableViewDelegate>
-
+@interface FZViewController : UIViewController
 {
-    UITableView* _TypeSelector;
-    NSString* _SelectedType;
+
+
     
-    UITableView* _UnitSelector;
+    NSString* _SelectedType;
     NSString* _SelectedUnit;
+    
+    NSArray* _Types;
 }
+
+@property (nonatomic, strong) IBOutlet UISegmentedControl* TypeSelector;
+@property (nonatomic, strong) IBOutlet UITableView* UnitSelector;
+
+-(IBAction)onTypeSelectorSelected;
 
 @end
