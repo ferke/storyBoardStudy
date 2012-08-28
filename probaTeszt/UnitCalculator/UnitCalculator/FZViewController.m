@@ -13,6 +13,9 @@
 
 @end
 
+static int CELL_HEIGHT = 44; //pixel
+static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
+
 @implementation FZViewController
 @synthesize TypeSelector, UnitSelector;
 
@@ -20,6 +23,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -60,12 +71,14 @@
     [cellBackground setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundView: cellBackground];
     
+    //change the keyboard type
     UITextField* textField = (UITextField*)[cell viewWithTag:101];
-    [textField setReturnKeyType: UIReturnKeyDone];
+    [textField setTag:(200+indexPath.row)];
+    [textField setKeyboardType:UIKeyboardTypeDecimalPad];
     
     return cell;
-}
 
+}
 #pragma mark TableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,5 +97,97 @@
     [UnitSelector reloadData];
 }
 
+-(IBAction)onInvisiblRowButtonPressed
+{
+    [self.view endEditing:YES];
+}
+
+#warning obsolete
+-(IBAction)onTextFieldEditBegun:(id)sender
+{
+    //_ActiveTextField = sender;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
+{
+    //on touching BG of view
+    
+    //hide keyboard 
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    //on pressing return (done) on keyboard
+    
+    //hide keyboard
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _ActiveTextField = textField;
+    _ActiveCell = (UITableViewCell*)textField.superview;
+    
+    
+    NSLog(@"tag %d", _ActiveTextField.tag);
+    NSLog(@"%@", NSStringFromCGRect(_ActiveTextField.frame));
+}
+
+#pragma mark keyboard show hide methods
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    
+    UnitSelector.contentInset = contentInsets;
+    UnitSelector.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGRect aRect = CGRectMake(screen.origin.x, screen.size.height - kbSize.height, screen.size.width, kbSize.height);
+    
+
+    
+    float textFieldBottomHeight = UnitSelector.frame.origin.y + _ActiveTextField.frame.origin.y +_ActiveTextField.frame.size.height;
+    textFieldBottomHeight += CELL_HEIGHT*(_ActiveTextField.tag-200);
+    textFieldBottomHeight += [[UIApplication sharedApplication] statusBarFrame].size.height;
+    textFieldBottomHeight += TEXTFIELD_BOTTOM_MARGIN;
+    
+    float textFieldLeftWidth = UnitSelector.frame.origin.x+ _ActiveTextField.frame.origin.x;
+    
+    CGPoint textFieldBottomLeftPoint = CGPointMake(textFieldLeftWidth, textFieldBottomHeight);
+    
+    NSLog(@"arect %@", NSStringFromCGRect(aRect));
+    NSLog(@"point %@", NSStringFromCGPoint(textFieldBottomLeftPoint));
+    
+    if (CGRectContainsPoint(aRect, textFieldBottomLeftPoint) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, textFieldBottomLeftPoint.y-aRect.origin.y);
+        [UnitSelector setContentOffset:scrollPoint animated:YES];
+    }
+    else
+    {
+        [UnitSelector setContentOffset:CGPointMake(0.0,0.0) animated:YES];
+    }
+    
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    //UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    
+    [UnitSelector setContentOffset:CGPointMake(0.0,0.0) animated:YES];
+    
+    //UnitSelector.contentInset = contentInsets;
+    //UnitSelector.scrollIndicatorInsets = contentInsets;
+}
 
 @end

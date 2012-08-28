@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FZViewController : UIViewController
+@interface FZViewController : UIViewController <UITextFieldDelegate>
 {
 
-
+    UITextField* _ActiveTextField;
+    UITableViewCell* _ActiveCell;
     
     NSString* _SelectedType;
     NSString* _SelectedUnit;
@@ -23,5 +24,6 @@
 @property (nonatomic, strong) IBOutlet UITableView* UnitSelector;
 
 -(IBAction)onTypeSelectorSelected;
+-(IBAction)onTextFieldEditBegun:(id)sender;
 
 @end
