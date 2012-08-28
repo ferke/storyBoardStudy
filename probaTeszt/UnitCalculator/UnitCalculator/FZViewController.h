@@ -14,6 +14,9 @@
     UITextField* _ActiveTextField;
     UITableViewCell* _ActiveCell;
     
+    BOOL _IsKeyboardUp;
+    CGRect _KeyboardRect;
+    
     NSString* _SelectedType;
     NSString* _SelectedUnit;
     

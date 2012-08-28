@@ -44,6 +44,11 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self.view endEditing:YES];
+}
+
 #pragma mark TableView datasource
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {    
@@ -131,9 +136,10 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     _ActiveTextField = textField;
     _ActiveCell = (UITableViewCell*)textField.superview;
     
-    
-    NSLog(@"tag %d", _ActiveTextField.tag);
-    NSLog(@"%@", NSStringFromCGRect(_ActiveTextField.frame));
+    if (_IsKeyboardUp)
+    {
+        [self moveTableContentAboveKeyboard];   
+    }
 }
 
 #pragma mark keyboard show hide methods
@@ -148,14 +154,23 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     UnitSelector.contentInset = contentInsets;
     UnitSelector.scrollIndicatorInsets = contentInsets;
     
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your application might not need or want this behavior.
-    
     CGRect screen = [[UIScreen mainScreen] bounds];
-    CGRect aRect = CGRectMake(screen.origin.x, screen.size.height - kbSize.height, screen.size.width, kbSize.height);
+    _KeyboardRect = CGRectMake(screen.origin.x, screen.size.height - kbSize.height, screen.size.width, kbSize.height);
     
+    _IsKeyboardUp = true;
 
-    
+    [self moveTableContentAboveKeyboard];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    _IsKeyboardUp = false;
+    [UnitSelector setContentOffset:CGPointMake(0.0,0.0) animated:YES];
+
+}
+
+- (void)moveTableContentAboveKeyboard
+{
     float textFieldBottomHeight = UnitSelector.frame.origin.y + _ActiveTextField.frame.origin.y +_ActiveTextField.frame.size.height;
     textFieldBottomHeight += CELL_HEIGHT*(_ActiveTextField.tag-200);
     textFieldBottomHeight += [[UIApplication sharedApplication] statusBarFrame].size.height;
@@ -165,29 +180,17 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     
     CGPoint textFieldBottomLeftPoint = CGPointMake(textFieldLeftWidth, textFieldBottomHeight);
     
-    NSLog(@"arect %@", NSStringFromCGRect(aRect));
+    NSLog(@"arect %@", NSStringFromCGRect(_KeyboardRect));
     NSLog(@"point %@", NSStringFromCGPoint(textFieldBottomLeftPoint));
     
-    if (CGRectContainsPoint(aRect, textFieldBottomLeftPoint) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, textFieldBottomLeftPoint.y-aRect.origin.y);
+    if (CGRectContainsPoint(_KeyboardRect, textFieldBottomLeftPoint) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, textFieldBottomLeftPoint.y-_KeyboardRect.origin.y);
         [UnitSelector setContentOffset:scrollPoint animated:YES];
     }
     else
     {
         [UnitSelector setContentOffset:CGPointMake(0.0,0.0) animated:YES];
     }
-    
-    
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    //UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    
-    [UnitSelector setContentOffset:CGPointMake(0.0,0.0) animated:YES];
-    
-    //UnitSelector.contentInset = contentInsets;
-    //UnitSelector.scrollIndicatorInsets = contentInsets;
 }
 
 @end
