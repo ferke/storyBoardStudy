@@ -18,9 +18,10 @@
     CGRect _KeyboardRect;
     
     NSString* _SelectedType;
-    NSString* _SelectedUnit;
     
-    NSArray* _Types;
+    NSArray* _Units;
+    
+    int _CurrentUnit;
 }
 
 @property (nonatomic, strong) IBOutlet UISegmentedControl* TypeSelector;

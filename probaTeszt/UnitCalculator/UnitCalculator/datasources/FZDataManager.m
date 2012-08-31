@@ -7,6 +7,8 @@
 //
 
 #import "FZDataManager.h"
+#import "FZUnit.h"
+#import "FZOperation.h"
 
 @implementation FZDataManager
 
@@ -30,7 +32,17 @@ static FZDataManager *gInstance = NULL;
     switch (type)
     {
         case weight:
-            return [NSArray arrayWithObjects:@"kilogram", @"gram", @"pound", @"ounce", nil];
+        {
+            return [NSArray arrayWithObjects:
+                    [[FZUnit alloc] initWithUnitName:@"kilogram" valueOrZero:0 operationsOrNil:nil],
+                    [[FZUnit alloc] initWithUnitName:@"gram" valueOrZero:0 operationsOrNil:
+                        [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:1000], nil]],
+                    [[FZUnit alloc] initWithUnitName:@"pound" valueOrZero:0 operationsOrNil:
+                        [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:0.453592], nil]],
+                    [[FZUnit alloc] initWithUnitName:@"ounce" valueOrZero:0 operationsOrNil:
+                     [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:35.274], nil]],
+                    nil];
+        }
         
         case length:
             return [NSArray arrayWithObjects:@"kilometer", @"meter", @"centimeter", @"mile", @"feet", @"inch", nil];

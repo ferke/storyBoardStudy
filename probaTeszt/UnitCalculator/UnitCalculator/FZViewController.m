@@ -8,6 +8,8 @@
 
 #import "FZViewController.h"
 #import "FZDataManager.h"
+#import "FZUnit.h"
+#import "FZCalculator.h"
 
 @interface FZViewController ()
 
@@ -31,6 +33,8 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
+    
+    _Units = [[FZDataManager getInstance] getUnitsForType:TypeSelector.selectedSegmentIndex];
 }
 
 - (void)viewDidUnload
@@ -57,9 +61,9 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    _Types = [[FZDataManager getInstance] getUnitsForType:TypeSelector.selectedSegmentIndex];
+
     
-    return _Types.count;
+    return _Units.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,10 +74,10 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     // Configure the cell...
     
     UILabel* label = (UILabel*)[cell viewWithTag:100];
-    label.text = [_Types objectAtIndex:indexPath.row];
+    label.text = [[_Units objectAtIndex:indexPath.row] Name];
     
     UIView* cellBackground = [[UIView alloc] init];
-    [cellBackground setBackgroundColor:[UIColor clearColor]];
+    //[cellBackground setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
     [cell setBackgroundView: cellBackground];
     
     //change the keyboard type
@@ -81,6 +85,14 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     [textField setTag:(200+indexPath.row)];
     [textField setKeyboardType:UIKeyboardTypeDecimalPad];
     
+    FZUnit* unit = [_Units objectAtIndex:indexPath.row];
+    NSLog(@"%d", indexPath.row);
+    NSLog(@"%@", [NSString stringWithFormat: @"%f", unit.Value]);
+    NSString* string = [NSString stringWithFormat: @"%.02f", unit.Value];
+    NSLog(@"%@", string);
+    textField.text = string; //[NSString stringWithFormat: @"%f", [[_Units objectAtIndex:indexPath.row] Value]];
+
+    textField.text = [NSString stringWithFormat: @"%.02f %.02f", (float)indexPath.row/100, unit.Value];
     return cell;
 
 }
@@ -97,6 +109,11 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
      */
 }
 
+-(IBAction)onTextFieldEditBegun:(id)sender;
+{
+    _CurrentUnit = [sender tag] - 200;
+}
+
 -(IBAction)onTypeSelectorSelected
 {
     [UnitSelector reloadData];
@@ -105,12 +122,7 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
 -(IBAction)onInvisiblRowButtonPressed
 {
     [self.view endEditing:YES];
-}
-
-#warning obsolete
--(IBAction)onTextFieldEditBegun:(id)sender
-{
-    //_ActiveTextField = sender;
+    [self calculate];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
@@ -119,6 +131,7 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     
     //hide keyboard 
     [self.view endEditing:YES];
+    [self calculate];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -127,8 +140,29 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     
     //hide keyboard
     [textField resignFirstResponder];
+    [self calculate];
     
     return YES;
+}
+
+-(void)calculate
+{
+    //refresh current unit
+    [(FZUnit*)[_Units objectAtIndex:_CurrentUnit] setValue:[[(UITextField*)[self.view viewWithTag:200+_CurrentUnit] text] doubleValue]];
+    
+    for (FZUnit* unit in _Units)
+    {
+        NSLog(@"elotte %f", unit.Value);
+    }
+
+    [FZCalculator calculateUnits:_Units fromIndex:_CurrentUnit];
+    
+    for (FZUnit* unit in _Units)
+    {
+        NSLog(@"utana %f", unit.Value);
+    }
+    
+    [UnitSelector reloadData];
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
@@ -146,8 +180,12 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
+
+    
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    //NSLog(@"kb size %@",NSStringFromCGSize(kbSize));
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     
@@ -155,7 +193,17 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
     UnitSelector.scrollIndicatorInsets = contentInsets;
     
     CGRect screen = [[UIScreen mainScreen] bounds];
-    _KeyboardRect = CGRectMake(screen.origin.x, screen.size.height - kbSize.height, screen.size.width, kbSize.height);
+    
+    //NSLog(@"screen rect%@",NSStringFromCGRect(screen));
+    
+    if ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortrait)
+    {
+        _KeyboardRect = CGRectMake(screen.origin.x, screen.size.height - kbSize.height, screen.size.width, kbSize.height);
+    }
+    else
+    {
+        _KeyboardRect = CGRectMake(screen.origin.y, screen.size.width - kbSize.width, screen.size.height, kbSize.width);
+    }
     
     _IsKeyboardUp = true;
 
@@ -173,15 +221,20 @@ static int TEXTFIELD_BOTTOM_MARGIN = 2; //pixel
 {
     float textFieldBottomHeight = UnitSelector.frame.origin.y + _ActiveTextField.frame.origin.y +_ActiveTextField.frame.size.height;
     textFieldBottomHeight += CELL_HEIGHT*(_ActiveTextField.tag-200);
-    textFieldBottomHeight += [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
+    int statusbarHeight = [[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortrait ?
+        [[UIApplication sharedApplication] statusBarFrame].size.height :
+        [[UIApplication sharedApplication] statusBarFrame].size.width;
+    
+    textFieldBottomHeight += statusbarHeight;
     textFieldBottomHeight += TEXTFIELD_BOTTOM_MARGIN;
     
     float textFieldLeftWidth = UnitSelector.frame.origin.x+ _ActiveTextField.frame.origin.x;
     
     CGPoint textFieldBottomLeftPoint = CGPointMake(textFieldLeftWidth, textFieldBottomHeight);
     
-    NSLog(@"arect %@", NSStringFromCGRect(_KeyboardRect));
-    NSLog(@"point %@", NSStringFromCGPoint(textFieldBottomLeftPoint));
+    //NSLog(@"arect %@", NSStringFromCGRect(_KeyboardRect));
+    //NSLog(@"point %@", NSStringFromCGPoint(textFieldBottomLeftPoint));
     
     if (CGRectContainsPoint(_KeyboardRect, textFieldBottomLeftPoint) ) {
         CGPoint scrollPoint = CGPointMake(0.0, textFieldBottomLeftPoint.y-_KeyboardRect.origin.y);

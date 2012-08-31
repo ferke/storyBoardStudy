@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46E4829D15F0AE48001E7421 /* FZCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E4829C15F0AE48001E7421 /* FZCalculator.m */; };
+		46E482A015F0BB36001E7421 /* FZUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E4829F15F0BB36001E7421 /* FZUnit.m */; };
+		46E482A315F0C2F9001E7421 /* FZOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E482A215F0C2F9001E7421 /* FZOperation.m */; };
 		4AA6A5A915D256FB002AF56F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA6A5A815D256FB002AF56F /* UIKit.framework */; };
 		4AA6A5AB15D256FB002AF56F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA6A5AA15D256FB002AF56F /* Foundation.framework */; };
 		4AA6A5AD15D256FB002AF56F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA6A5AC15D256FB002AF56F /* CoreGraphics.framework */; };
@@ -22,6 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46E4829B15F0AE48001E7421 /* FZCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZCalculator.h; path = datasources/FZCalculator.h; sourceTree = "<group>"; };
+		46E4829C15F0AE48001E7421 /* FZCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZCalculator.m; path = datasources/FZCalculator.m; sourceTree = "<group>"; };
+		46E4829E15F0BB36001E7421 /* FZUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZUnit.h; path = datasources/FZUnit.h; sourceTree = "<group>"; };
+		46E4829F15F0BB36001E7421 /* FZUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZUnit.m; path = datasources/FZUnit.m; sourceTree = "<group>"; };
+		46E482A115F0C2F9001E7421 /* FZOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZOperation.h; path = datasources/FZOperation.h; sourceTree = "<group>"; };
+		46E482A215F0C2F9001E7421 /* FZOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZOperation.m; path = datasources/FZOperation.m; sourceTree = "<group>"; };
 		4AA6A5A415D256FB002AF56F /* UnitCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA6A5A815D256FB002AF56F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4AA6A5AA15D256FB002AF56F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +123,12 @@
 			children = (
 				4AA6A5C915D27307002AF56F /* FZDataManager.h */,
 				4AA6A5CA15D27307002AF56F /* FZDataManager.m */,
+				46E4829B15F0AE48001E7421 /* FZCalculator.h */,
+				46E4829C15F0AE48001E7421 /* FZCalculator.m */,
+				46E4829E15F0BB36001E7421 /* FZUnit.h */,
+				46E4829F15F0BB36001E7421 /* FZUnit.m */,
+				46E482A115F0C2F9001E7421 /* FZOperation.h */,
+				46E482A215F0C2F9001E7421 /* FZOperation.m */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -198,6 +213,9 @@
 				4AA6A5B915D256FB002AF56F /* FZAppDelegate.m in Sources */,
 				4AA6A5BF15D256FB002AF56F /* FZViewController.m in Sources */,
 				4AA6A5CB15D27307002AF56F /* FZDataManager.m in Sources */,
+				46E4829D15F0AE48001E7421 /* FZCalculator.m in Sources */,
+				46E482A015F0BB36001E7421 /* FZUnit.m in Sources */,
+				46E482A315F0C2F9001E7421 /* FZOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
