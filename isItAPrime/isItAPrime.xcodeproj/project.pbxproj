@@ -1,0 +1,301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4644E48415F4D5C800B56A85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644E48315F4D5C800B56A85 /* UIKit.framework */; };
+		4644E48615F4D5C800B56A85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644E48515F4D5C800B56A85 /* Foundation.framework */; };
+		4644E48815F4D5C800B56A85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644E48715F4D5C800B56A85 /* CoreGraphics.framework */; };
+		4644E48E15F4D5C800B56A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4644E48C15F4D5C800B56A85 /* InfoPlist.strings */; };
+		4644E49015F4D5C800B56A85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4644E48F15F4D5C800B56A85 /* main.m */; };
+		4644E49415F4D5C800B56A85 /* FZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4644E49315F4D5C800B56A85 /* FZAppDelegate.m */; };
+		4644E49715F4D5C800B56A85 /* FZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4644E49615F4D5C800B56A85 /* FZViewController.m */; };
+		4644E49A15F4D5C800B56A85 /* FZViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4644E49815F4D5C800B56A85 /* FZViewController_iPhone.xib */; };
+		4644E49D15F4D5C800B56A85 /* FZViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4644E49B15F4D5C800B56A85 /* FZViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4644E47F15F4D5C800B56A85 /* isItAPrime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isItAPrime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4644E48315F4D5C800B56A85 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4644E48515F4D5C800B56A85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4644E48715F4D5C800B56A85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4644E48B15F4D5C800B56A85 /* isItAPrime-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "isItAPrime-Info.plist"; sourceTree = "<group>"; };
+		4644E48D15F4D5C800B56A85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4644E48F15F4D5C800B56A85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4644E49115F4D5C800B56A85 /* isItAPrime-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "isItAPrime-Prefix.pch"; sourceTree = "<group>"; };
+		4644E49215F4D5C800B56A85 /* FZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FZAppDelegate.h; sourceTree = "<group>"; };
+		4644E49315F4D5C800B56A85 /* FZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FZAppDelegate.m; sourceTree = "<group>"; };
+		4644E49515F4D5C800B56A85 /* FZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FZViewController.h; sourceTree = "<group>"; };
+		4644E49615F4D5C800B56A85 /* FZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FZViewController.m; sourceTree = "<group>"; };
+		4644E49915F4D5C800B56A85 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FZViewController_iPhone.xib; sourceTree = "<group>"; };
+		4644E49C15F4D5C800B56A85 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FZViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4644E47C15F4D5C800B56A85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4644E48415F4D5C800B56A85 /* UIKit.framework in Frameworks */,
+				4644E48615F4D5C800B56A85 /* Foundation.framework in Frameworks */,
+				4644E48815F4D5C800B56A85 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4644E47415F4D5C800B56A85 = {
+			isa = PBXGroup;
+			children = (
+				4644E48915F4D5C800B56A85 /* isItAPrime */,
+				4644E48215F4D5C800B56A85 /* Frameworks */,
+				4644E48015F4D5C800B56A85 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4644E48015F4D5C800B56A85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4644E47F15F4D5C800B56A85 /* isItAPrime.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4644E48215F4D5C800B56A85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4644E48315F4D5C800B56A85 /* UIKit.framework */,
+				4644E48515F4D5C800B56A85 /* Foundation.framework */,
+				4644E48715F4D5C800B56A85 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4644E48915F4D5C800B56A85 /* isItAPrime */ = {
+			isa = PBXGroup;
+			children = (
+				4644E49215F4D5C800B56A85 /* FZAppDelegate.h */,
+				4644E49315F4D5C800B56A85 /* FZAppDelegate.m */,
+				4644E49515F4D5C800B56A85 /* FZViewController.h */,
+				4644E49615F4D5C800B56A85 /* FZViewController.m */,
+				4644E49815F4D5C800B56A85 /* FZViewController_iPhone.xib */,
+				4644E49B15F4D5C800B56A85 /* FZViewController_iPad.xib */,
+				4644E48A15F4D5C800B56A85 /* Supporting Files */,
+			);
+			path = isItAPrime;
+			sourceTree = "<group>";
+		};
+		4644E48A15F4D5C800B56A85 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4644E48B15F4D5C800B56A85 /* isItAPrime-Info.plist */,
+				4644E48C15F4D5C800B56A85 /* InfoPlist.strings */,
+				4644E48F15F4D5C800B56A85 /* main.m */,
+				4644E49115F4D5C800B56A85 /* isItAPrime-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4644E47E15F4D5C800B56A85 /* isItAPrime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4644E4A015F4D5C800B56A85 /* Build configuration list for PBXNativeTarget "isItAPrime" */;
+			buildPhases = (
+				4644E47B15F4D5C800B56A85 /* Sources */,
+				4644E47C15F4D5C800B56A85 /* Frameworks */,
+				4644E47D15F4D5C800B56A85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = isItAPrime;
+			productName = isItAPrime;
+			productReference = 4644E47F15F4D5C800B56A85 /* isItAPrime.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4644E47615F4D5C800B56A85 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FZ;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Zoltan Ferke";
+			};
+			buildConfigurationList = 4644E47915F4D5C800B56A85 /* Build configuration list for PBXProject "isItAPrime" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4644E47415F4D5C800B56A85;
+			productRefGroup = 4644E48015F4D5C800B56A85 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4644E47E15F4D5C800B56A85 /* isItAPrime */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4644E47D15F4D5C800B56A85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4644E48E15F4D5C800B56A85 /* InfoPlist.strings in Resources */,
+				4644E49A15F4D5C800B56A85 /* FZViewController_iPhone.xib in Resources */,
+				4644E49D15F4D5C800B56A85 /* FZViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4644E47B15F4D5C800B56A85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4644E49015F4D5C800B56A85 /* main.m in Sources */,
+				4644E49415F4D5C800B56A85 /* FZAppDelegate.m in Sources */,
+				4644E49715F4D5C800B56A85 /* FZViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4644E48C15F4D5C800B56A85 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4644E48D15F4D5C800B56A85 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4644E49815F4D5C800B56A85 /* FZViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4644E49915F4D5C800B56A85 /* en */,
+			);
+			name = FZViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		4644E49B15F4D5C800B56A85 /* FZViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4644E49C15F4D5C800B56A85 /* en */,
+			);
+			name = FZViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4644E49E15F4D5C800B56A85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4644E49F15F4D5C800B56A85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4644E4A115F4D5C800B56A85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isItAPrime/isItAPrime-Prefix.pch";
+				INFOPLIST_FILE = "isItAPrime/isItAPrime-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4644E4A215F4D5C800B56A85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isItAPrime/isItAPrime-Prefix.pch";
+				INFOPLIST_FILE = "isItAPrime/isItAPrime-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4644E47915F4D5C800B56A85 /* Build configuration list for PBXProject "isItAPrime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4644E49E15F4D5C800B56A85 /* Debug */,
+				4644E49F15F4D5C800B56A85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4644E4A015F4D5C800B56A85 /* Build configuration list for PBXNativeTarget "isItAPrime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4644E4A115F4D5C800B56A85 /* Debug */,
+				4644E4A215F4D5C800B56A85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4644E47615F4D5C800B56A85 /* Project object */;
+}
