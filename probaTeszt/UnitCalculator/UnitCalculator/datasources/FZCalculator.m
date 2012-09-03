@@ -45,15 +45,19 @@
 
 +(void)calculateBaseUnit:(FZUnit*)base modifier:(FZUnit*)modifier
 {
-    for (FZOperation* operation in modifier.Operations) {
+    double temp= modifier.Value;
+    
+    for (int i=modifier.Operations.count-1; i < modifier.Operations.count; i--)
+    {
+        FZOperation* operation = [modifier.Operations objectAtIndex:i];
         
         switch (operation.Type) {
             case multiplication:
-                base.Value = modifier.Value / operation.Value;
+                temp = temp / operation.Value;
                 break;
                 
             case addition:
-                base.Value = modifier.Value - operation.Value;
+                temp = temp - operation.Value;
                 break;
                 
             default:
@@ -61,19 +65,25 @@
                 break;
         }
     }
+    
+    base.Value = temp;
 }
 
 +(void)calculateUnit:(FZUnit*)unit base:(FZUnit*)base
 {
+    double temp= base.Value;
+    
     for (FZOperation* operation in unit.Operations) {
+        
+        
         
         switch (operation.Type) {
             case multiplication:
-                unit.Value = base.Value * operation.Value;
+                temp = temp * operation.Value;
                 break;
                 
             case addition:
-                unit.Value = base.Value + operation.Value;
+                temp = temp + operation.Value;
                 break;
                 
             default:
@@ -81,6 +91,8 @@
                 break;
         }
     }
+    
+    unit.Value = temp;
 }
 
 @end

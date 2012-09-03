@@ -45,10 +45,29 @@ static FZDataManager *gInstance = NULL;
         }
         
         case length:
-            return [NSArray arrayWithObjects:@"kilometer", @"meter", @"centimeter", @"mile", @"feet", @"inch", nil];
+            return [NSArray arrayWithObjects:
+                    [[FZUnit alloc] initWithUnitName:@"kilometer" valueOrZero:0 operationsOrNil:[[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:0.001], nil]],
+                    [[FZUnit alloc] initWithUnitName:@"meter" valueOrZero:0 operationsOrNil:nil],
+                    [[FZUnit alloc] initWithUnitName:@"centimeter" valueOrZero:0 operationsOrNil:
+                     [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:100], nil]],
+                    [[FZUnit alloc] initWithUnitName:@"mile" valueOrZero:0 operationsOrNil:
+                     [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:0.000621371], nil]],
+                    [[FZUnit alloc] initWithUnitName:@"feet" valueOrZero:0 operationsOrNil:
+                     [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:3.28084], nil]],
+                    [[FZUnit alloc] initWithUnitName:@"inch" valueOrZero:0 operationsOrNil:
+                     [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:multiplication value:39.3701], nil]],
+                    nil];
         
         case temperature:
-            return [NSArray arrayWithObjects:@"C", @"K", @"F", nil];
+            return [NSArray arrayWithObjects:
+                    [[FZUnit alloc] initWithUnitName:@"celsius" valueOrZero:0 operationsOrNil:nil],
+                    [[FZUnit alloc] initWithUnitName:@"fahrenheit" valueOrZero:0 operationsOrNil:
+                        [[NSArray alloc] initWithObjects:
+                         [[FZOperation alloc] initWithOperationType:multiplication value:1.8],
+                         [[FZOperation alloc] initWithOperationType:addition value:32],nil]],
+                    [[FZUnit alloc] initWithUnitName:@"kelvin" valueOrZero:0 operationsOrNil:
+                        [[NSArray alloc] initWithObjects:[[FZOperation alloc] initWithOperationType:addition value:273.15], nil]],
+                    nil];
 
         case volume:
             return [NSArray arrayWithObjects:@"liter", @"gallon", nil];

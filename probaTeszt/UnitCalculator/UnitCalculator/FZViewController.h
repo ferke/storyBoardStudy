@@ -21,7 +21,7 @@
     
     NSArray* _Units;
     
-    int _CurrentUnit;
+    NSIndexPath* _CurrentUnit;
 }
 
 @property (nonatomic, strong) IBOutlet UISegmentedControl* TypeSelector;
